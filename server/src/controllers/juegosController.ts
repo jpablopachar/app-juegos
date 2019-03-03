@@ -11,7 +11,7 @@ class JuegosController {
 
   public async listarJuego(req: Request, res: Response): Promise<any> {
     const { id } = req.params;
-    const juego = await pool.query('SELECT * FROM Juegos WHERE id = ?', [id]);
+    const juego = await pool.query('SELECT * FROM Juegos WHERE idJuego = ?', [id]);
 
     // Si el juego existe
     if (juego.length > 0) return res.json(juego[0]);
@@ -27,14 +27,14 @@ class JuegosController {
   public async actualizarJuego(req: Request, res: Response): Promise<void> {
     const { id } = req.params;
 
-    await pool.query('UPDATE Juegos set ? WHERE id = ?', [req.body, id]);
+    await pool.query('UPDATE Juegos set ? WHERE idJuego = ?', [req.body, id]);
     res.json({ mensaje: 'Juego actualizado' });
   }
 
   public async eliminarJuego(req: Request, res: Response): Promise<void> {
     const { id } = req.params;
 
-    await pool.query('DELETE FROM Juegos WHERE id = ?', [id]);
+    await pool.query('DELETE FROM Juegos WHERE idJuego = ?', [id]);
     res.json({ mensaje: 'Juego eliminado' });
   }
 }

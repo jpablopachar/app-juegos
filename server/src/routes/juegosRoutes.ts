@@ -13,9 +13,9 @@ class JuegosRoutes {
   config():void {
     this.router.get('/juegos', juegosController.listarJuegos);
     this.router.get('/juego/:id', juegosController.listarJuego);
-    this.router.get('/juego', juegosController.crearJuego);
-    this.router.get('/juego/:id', juegosController.actualizarJuego);
-    this.router.get('/juego/:id', juegosController.eliminarJuego);
+    this.router.post('/juego', juegosController.crearJuego);
+    this.router.put('/juego/:id', juegosController.actualizarJuego);
+    this.router.delete('/juego/:id', juegosController.eliminarJuego);
   }
 }
 
